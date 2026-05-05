@@ -1,0 +1,64 @@
+[workspace]
+resolver = "3"
+members = [
+    "ra2m_ffi",
+    "ra2m_sim",
+    "ra2m_cpn",
+]
+
+[workspace.package]
+version = "1.0.0"
+edition = "2024"
+license = "BSD-3-Clause-Clear"
+repository = "https://github.com/zama-ai/ra2m"
+rust-version="1.94"
+
+[workspace.dependencies]
+# Main publishable crates
+ra2m_sim = { version = "1.0.0", path = "ra2m_sim" }
+ra2m_ffi = { version = "1.0.0", path = "ra2m_ffi" }
+ra2m_cpn = { version = "1.0.0", path = "ra2m_cpn" }
+
+# Internal ra2m_sim sub-crates
+ra2m_sim_containers = { version = "1.0.0", path = "ra2m_sim/ra2m_sim_containers" }
+ra2m_sim_kernel =     { version = "1.0.0", path = "ra2m_sim/ra2m_sim_kernel" }
+ra2m_sim_output =     { version = "1.0.0", path = "ra2m_sim/ra2m_sim_output" }
+ra2m_sim_macros =     { version = "1.0.0", path = "ra2m_sim/ra2m_sim_macros" }
+
+# Internal ra2m_ffi sub-crates
+ra2m_ffi_ipc = { version = "1.0.0", path = "ra2m_ffi/ra2m_ffi_ipc" }
+ra2m_ffi_rpc = { version = "1.0.0", path = "ra2m_ffi/ra2m_ffi_rpc" }
+
+[package]
+name = "ra2m"
+description = "Ra2m The Rust Async Architecture Modeling tool"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+readme.workspace = true
+
+[features]
+default = ["debug"]
+tokio-mt = []
+debug = ["ra2m_sim/debug"]
+rpc = ["ra2m_ffi/rpc", "ra2m_cpn/rpc"]
+
+# Compiles much faster for tests and allows reasonable performance for iterating
+[profile.devo]
+inherits = "dev"
+opt-level = 3
+lto = "off"
+debug-assertions = false
+
+[dependencies]
+ra2m_ffi.workspace = true
+ra2m_sim.workspace = true
+ra2m_cpn.workspace = true
+
+[dev-dependencies]
+clap = { version = "4", features = ["derive"] }
+clap-num = "1"
+once_cell = "1.10.0"
+rand = "0.10"
+tokio = { version = "1", features = ["full"]}

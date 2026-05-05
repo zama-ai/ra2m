@@ -1,0 +1,24 @@
+syntax = "proto3";
+package remote_port;
+
+service RemotePort {
+  rpc read (ReadRequest) returns (ReadAck);
+  rpc write (WriteRequest) returns (WriteAck);
+}
+
+message ReadRequest {
+  uint64 addr = 1;
+  uint64 size = 2;
+}
+
+message ReadAck {
+  bytes data = 1;
+}
+
+message WriteRequest {
+  uint64 addr = 1;
+  bytes data = 2;
+}
+
+message WriteAck {}
+

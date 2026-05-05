@@ -1,0 +1,13 @@
+[package]
+name = "ra2m_ffi_ipc"
+description = "Expose ipc ffi used by Ra2m"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+readme.workspace = true
+
+[dependencies]
+ipc-channel ="0.18"
+serde = { version = "1", features = ["derive"] }
+thiserror = "2.0"

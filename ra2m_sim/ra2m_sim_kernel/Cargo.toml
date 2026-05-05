@@ -1,0 +1,35 @@
+[package]
+name = "ra2m_sim_kernel"
+description = "Ra2m simulation kernel. Leverage Rust-async features for Architecture simulation"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+readme.workspace = true
+
+[features]
+default = ["ctrlc-panic"]
+ctrlc-panic = ["ctrlc"] # Generate backtrace on Ctrl-C signal
+
+[dependencies]
+# Locals dependencies
+ra2m_sim_output.workspace = true
+ra2m_sim_containers.workspace = true
+ra2m_sim_macros.workspace = true
+
+# Externals dependencies
+anyhow = "1"
+async-trait = "0.1.56"
+crossbeam = "0.8.1"
+ctrlc = {version = "3.2.2", optional = true}
+futures = "0.3.21"
+getset = "0.1.2" # Ease getter/setter generation
+num = "0.4"
+once_cell = "1.10.0"
+rand = "0.10"
+regex = {version = "1", features = ["pattern"] }
+serde = { version = "1", features = ["derive"] }
+serial_test = "0.8.0" # Rust tests one at a time prevent clashing on global simulation state
+thiserror = "1"
+tokio = { version = "1", features = ["full"]} # Version 1.15 required for tracing
+bytemuck = "1.24.0"

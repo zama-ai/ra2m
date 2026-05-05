@@ -1,0 +1,21 @@
+[package]
+name = "ra2m_sim"
+description = "Ra2m simulation framework"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+readme.workspace = true
+
+[dependencies]
+ra2m_sim_containers.workspace = true
+ra2m_sim_kernel.workspace = true
+ra2m_sim_output.workspace = true
+ra2m_sim_macros.workspace = true
+
+[dev-dependencies]
+serial_test = "0.8.0" # Rust tests one at a time prevent clashing on global simulation state
+
+[features]
+default = []
+debug = ["ra2m_sim_kernel/ctrlc-panic", "ra2m_sim_output/log-debug"]

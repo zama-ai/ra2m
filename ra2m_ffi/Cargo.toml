@@ -1,0 +1,31 @@
+[package]
+name = "ra2m_ffi"
+description = "Ra2m ffi definition. Simple crate for external used of ffi."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+readme.workspace = true
+
+[dependencies]
+ra2m_ffi_ipc.workspace = true
+ra2m_ffi_rpc = { workspace = true, optional = true }
+
+[features]
+rpc = ["ra2m_ffi_rpc", "ra2m_ffi_rpc/rpc"]
+
+[dev-dependencies]
+clap = { version = "4", features = ["derive"] }
+clap-num = "1"
+rand = "0.10"
+tokio = { version = "1", features = ["full"]}
+once_cell = "1.10.0"
+
+[[example]]
+name = "ipc_demo"
+path = "examples/ipc_demo.rs"
+
+[[example]]
+name = "rpc_demo"
+path = "examples/rpc_demo.rs"
+required-features = ["rpc"]

@@ -1,0 +1,150 @@
+<
+	[0][ra2m_sim/ra2m_sim_kernel/src/scheduler.rs:324, ra2m_sim_kernel::scheduler::Scheduler::simulate, Scheduler::Info]
+	=> { duration = 400,}
+	=> Start simulation loop.
+>
+<
+	[30][ra2m_sim/tests/text_logger.rs:58, text_logger::LogModule::prc_glog_n_delay, Any::Info]
+	=> {}
+>
+<
+	[30][ra2m_sim/tests/text_logger.rs:59, text_logger::LogModule::prc_glog_n_delay, Any::Info]
+	=> {}
+	=> Global: All default with no vars and a custom user message.
+>
+<
+	[30][ra2m_sim/tests/text_logger.rs:65, text_logger::LogModule::prc_glog_n_delay, Any::Info]
+	=> { dflt_cat = true, dflt_verb = true,}
+>
+<
+	[30][ra2m_sim/tests/text_logger.rs:66, text_logger::LogModule::prc_glog_n_delay, Any::Info]
+	=> { dflt_cat = true, dflt_verb = true,}
+	=> Global: With custom user message.
+>
+<
+	[30][ra2m_sim/tests/text_logger.rs:70, text_logger::LogModule::prc_glog_n_delay, Port::Info]
+	=> { dflt_cat = false, dflt_verb = true,}
+>
+<
+	[30][ra2m_sim/tests/text_logger.rs:71, text_logger::LogModule::prc_glog_n_delay, Port::Info]
+	=> { dflt_cat = false, dflt_verb = true,}
+	=> Global: With custom user message.
+>
+<
+	[30][ra2m_sim/tests/text_logger.rs:76, text_logger::LogModule::prc_glog_n_delay, Any::Error]
+	=> { dflt_cat = true, dflt_verb = false,}
+>
+<
+	[30][ra2m_sim/tests/text_logger.rs:77, text_logger::LogModule::prc_glog_n_delay, Any::Error]
+	=> { dflt_cat = true, dflt_verb = false,}
+	=> Global: With custom user message.
+>
+<
+	[35][ra2m_sim/tests/text_logger.rs:100, text_logger::LogModule::prc_mlog_n_delay, Any::Info]
+	=> path: root.logger.AwesomeLoggerName,
+	=> {}
+>
+<
+	[35][ra2m_sim/tests/text_logger.rs:101, text_logger::LogModule::prc_mlog_n_delay, Any::Info]
+	=> path: root.logger.AwesomeLoggerName,
+	=> {}
+	=> Local: All default with no vars and a custom user message.
+>
+<
+	[35][ra2m_sim/tests/text_logger.rs:107, text_logger::LogModule::prc_mlog_n_delay, Any::Info]
+	=> path: root.logger.AwesomeLoggerName,
+	=> { dflt_cat = true, dflt_verb = true,}
+>
+<
+	[35][ra2m_sim/tests/text_logger.rs:108, text_logger::LogModule::prc_mlog_n_delay, Any::Info]
+	=> path: root.logger.AwesomeLoggerName,
+	=> { dflt_cat = true, dflt_verb = true,}
+	=> Local: With custom user message.
+>
+<
+	[35][ra2m_sim/tests/text_logger.rs:112, text_logger::LogModule::prc_mlog_n_delay, Port::Info]
+	=> path: root.logger.AwesomeLoggerName,
+	=> { dflt_cat = false, dflt_verb = true,}
+>
+<
+	[35][ra2m_sim/tests/text_logger.rs:113, text_logger::LogModule::prc_mlog_n_delay, Port::Info]
+	=> path: root.logger.AwesomeLoggerName,
+	=> { dflt_cat = false, dflt_verb = true,}
+	=> Local: With custom user message.
+>
+<
+	[35][ra2m_sim/tests/text_logger.rs:118, text_logger::LogModule::prc_mlog_n_delay, Any::Error]
+	=> path: root.logger.AwesomeLoggerName,
+	=> { dflt_cat = true, dflt_verb = false,}
+>
+<
+	[35][ra2m_sim/tests/text_logger.rs:119, text_logger::LogModule::prc_mlog_n_delay, Any::Error]
+	=> path: root.logger.AwesomeLoggerName,
+	=> { dflt_cat = true, dflt_verb = false,}
+	=> Local: With custom user message.
+>
+<
+	[40][ra2m_sim/tests/text_logger.rs:86, text_logger::LogModule::prc_glog_n_delay, Port::Error]
+	=> { iter = 0, val_usize = 264, val_str = "Simple &str", val_vec = [1, 2, 3, 4, 5],}
+	=> Global scope filter.
+>
+<
+	[45][ra2m_sim/tests/text_logger.rs:125, text_logger::LogModule::prc_mlog_n_delay, Own::Debug]
+	=> path: root.logger.AwesomeLoggerName,
+	=> { iter = 0,}
+	=> Module scope filter.
+>
+<
+	[50][ra2m_sim/tests/text_logger.rs:86, text_logger::LogModule::prc_glog_n_delay, Port::Error]
+	=> { iter = 1, val_usize = 264, val_str = "Simple &str", val_vec = [1, 2, 3, 4, 5],}
+	=> Global scope filter.
+>
+<
+	[55][ra2m_sim/tests/text_logger.rs:125, text_logger::LogModule::prc_mlog_n_delay, Own::Debug]
+	=> path: root.logger.AwesomeLoggerName,
+	=> { iter = 1,}
+	=> Module scope filter.
+>
+<
+	[60][ra2m_sim/tests/text_logger.rs:86, text_logger::LogModule::prc_glog_n_delay, Port::Error]
+	=> { iter = 2, val_usize = 264, val_str = "Simple &str", val_vec = [1, 2, 3, 4, 5],}
+	=> Global scope filter.
+>
+<
+	[65][ra2m_sim/tests/text_logger.rs:125, text_logger::LogModule::prc_mlog_n_delay, Own::Debug]
+	=> path: root.logger.AwesomeLoggerName,
+	=> { iter = 2,}
+	=> Module scope filter.
+>
+<
+	[70][ra2m_sim/tests/text_logger.rs:86, text_logger::LogModule::prc_glog_n_delay, Port::Error]
+	=> { iter = 3, val_usize = 264, val_str = "Simple &str", val_vec = [1, 2, 3, 4, 5],}
+	=> Global scope filter.
+>
+<
+	[75][ra2m_sim/tests/text_logger.rs:125, text_logger::LogModule::prc_mlog_n_delay, Own::Debug]
+	=> path: root.logger.AwesomeLoggerName,
+	=> { iter = 3,}
+	=> Module scope filter.
+>
+<
+	[80][ra2m_sim/tests/text_logger.rs:86, text_logger::LogModule::prc_glog_n_delay, Port::Error]
+	=> { iter = 4, val_usize = 264, val_str = "Simple &str", val_vec = [1, 2, 3, 4, 5],}
+	=> Global scope filter.
+>
+<
+	[85][ra2m_sim/tests/text_logger.rs:125, text_logger::LogModule::prc_mlog_n_delay, Own::Debug]
+	=> path: root.logger.AwesomeLoggerName,
+	=> { iter = 4,}
+	=> Module scope filter.
+>
+<
+	[95][ra2m_sim/tests/text_logger.rs:132, text_logger::LogModule::prc_mlog_n_delay, Own::Error]
+	=> path: root.logger.AwesomeLoggerName,
+	=> { self.a = 0, self.b = -8,}
+	=> log member value with self.name syntax.
+>
+<
+	[95][ra2m_sim/ra2m_sim_kernel/src/scheduler.rs:440, ra2m_sim_kernel::scheduler::Scheduler::simulate, Scheduler::Info]
+	=> { "Scheduler have no more prc to simulate" = "Scheduler have no more prc to simulate",}
+>

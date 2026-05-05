@@ -1,0 +1,4 @@
+/target
+
+# Simple ignore pattern for user
+ngt_*
