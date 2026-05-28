@@ -1,5 +1,5 @@
 [workspace]
-resolver = "3"
+resolver = "2"
 members = [
     "ra2m_ffi",
     "ra2m_sim",
@@ -8,9 +8,10 @@ members = [
 
 [workspace.package]
 version = "1.0.0"
-edition = "2024"
+edition = "2021"
 license = "BSD-3-Clause-Clear"
 repository = "https://github.com/zama-ai/ra2m"
+readme = "Readme.md"
 rust-version="1.94"
 
 [workspace.dependencies]
