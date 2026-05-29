@@ -31,7 +31,6 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: 'false'
-          token: ${{ secrets.REPO_CHECKOUT_TOKEN }}
 
       - name: Authenticate on registry
         uses: rust-lang/crates-io-auth-action@b7e9a28eded4986ec6b1fa40eeee8f8f165559ec # v1.0.3
