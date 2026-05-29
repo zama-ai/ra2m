@@ -120,8 +120,8 @@ impl From<&SubRangeAddr> for Traceable {
 /// Access pattern encoding:
 ///  * Simple: access on contiguous chunk of memory
 ///  * Stride: access on non-contiguous chunk of memory. Encoded as chunk size, stride offset and
-///  required repetition.
-///  NB: Stride pattern should be refine to match AHB/AXI4 specification
+///    required repetition.
+///    NB: Stride pattern should be refine to match AHB/AXI4 specification
 #[derive(Debug, Clone, Copy, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 pub enum Pattern {
     Unset(),

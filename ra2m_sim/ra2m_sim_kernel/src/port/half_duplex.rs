@@ -564,13 +564,18 @@ where
         let mut rx = self.0.lock().await;
         let mut pkt = {
             let pkt = rx.recv().await;
-            if uid.is_none() || pkt.uid() == uid.unwrap() {
-                pkt
-            } else {
-                log!(|rx| log::Category::Protocol, log::Verbosity::Warning
-                    => rx.name, pkt.uid(), uid
-                    => "Packet UID mismatch, reordering occur due to multiple outstanding or reset. In case of multiple outstanding, you should use a more evolved req/resp handling (Cf. req_burst/wait_pkt)");
-                return Err(PacketError::UidMismatch(pkt.uid(), uid.unwrap()).into());
+            match uid {
+                None => pkt,
+                Some(u) => {
+                    if pkt.uid() == u {
+                        pkt
+                    } else {
+                        log!(|rx| log::Category::Protocol, log::Verbosity::Warning
+                            => rx.name, pkt.uid(), uid
+                            => "Packet UID mismatch, reordering occur due to multiple outstanding or reset. In case of multiple outstanding, you should use a more evolved req/resp handling (Cf. req_burst/wait_pkt)");
+                        return Err(PacketError::UidMismatch(pkt.uid(), u).into());
+                    }
+                }
             }
         };
 

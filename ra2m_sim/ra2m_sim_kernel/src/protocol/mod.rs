@@ -40,7 +40,7 @@ pub mod network;
 /// A Traceable object have a dedicated store for handler history and provide two methods:
 ///  * One to extend the history with a given handler
 ///  * One to finish() the history stream with a Base Handler (done in trace! macro)
-///  TODO: Should expose the Custom handler type as parameters
+//  TODO: Should expose the Custom handler type as parameters
 ///
 /// Aims of this traits is also to give hints for formatting into a DataFrame,
 ///  to prevent boilerplate code a derive macro is available.
@@ -63,7 +63,7 @@ pub trait Trace: Sized + serde::Serialize {
     fn wrap_up(&mut self, uid: usize);
 
     fn export_as_traceable_map(
-        vec: &Vec<Self>,
+        vec: &[Self],
     ) -> std::collections::HashMap<&'static str, Vec<Traceable>>;
 }
 

@@ -5,10 +5,11 @@
 //! * delay: Custom future used by Hw process to wait for a given amount of simulated time
 //! * event: Custom future used by Hw process to wait/regiter or trigger an Hw event
 //! * module: Define module abstraction that ease the generic management of distinct module
-//! definition (eg. Module of different kind with distinct behavior)
+//!   definition (eg. Module of different kind with distinct behavior)
 //! * port: Inter-process communication primitive. Rely on async channel and correctly hooked up
 //! * within the scheduler to prevent deadlock
-//! * memport: Leverage port abstraction to build memory mapped inter-process communication (eg. request/response protocol)
+//! * memport: Leverage port abstraction to build memory mapped inter-process communication
+//!   (eg. request/response protocol)
 //! * scheduler: provide utility function for Hw process interaction and a simulate function that
 //!   run the simulation for a given amount of time
 //!

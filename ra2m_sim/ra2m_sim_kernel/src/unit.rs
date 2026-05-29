@@ -291,7 +291,7 @@ impl FromStr for Frequency {
 
         // Parse units
         match val_unit[1].to_lowercase().as_str() {
-            "Hz" => Ok(value.Hz()),
+            "hz" => Ok(value.Hz()),
             "khz" => Ok(value.kHz()),
             "mhz" => Ok(value.MHz()),
             "ghz" => Ok(value.GHz()),

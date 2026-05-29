@@ -268,15 +268,15 @@ pub const LOWEST_VERBOSITY: Verbosity = Verbosity::Info;
 ///
 /// This macro have various matching option (NB: ()? -> optional fields):
 ///  1. log!( |self| category?, verbosity?
-///            => comma separated list of variables to log
-///            (=> user custom str or format!(...) )?
-/// The passed self must implement the Module trait.  These kind of log message use the module
-/// scope to filtered the message content (NB: self must implement Module trait)
+///     => comma separated list of variables to log
+///     (=> user custom str or format!(...) )?
+///     The passed self must implement the Module trait.  These kind of log message use the module
+///     scope to filtered the message content (NB: self must implement Module trait)
 ///
 ///  2. log!( category?, verbosity?
-///            => comma separated list of variables to log
-///            (=> user custom str or format!(...) )?
-/// These kind of log message use the global scope to filtered the message content
+///     => comma separated list of variables to log
+///     (=> user custom str or format!(...) )?
+///     These kind of log message use the global scope to filtered the message content
 #[macro_export]
 macro_rules! log {
 

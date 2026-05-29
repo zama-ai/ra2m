@@ -3,7 +3,7 @@
 //! RA2M provide two main kind of outputs:
 //!  * log: through the use of the log! macro. No requirement on the logged variables
 //!  * trace: through the use of the trace! macro. Depending on the used backend, the tracced
-//!  variables must implement particular Traits
+//!    variables must implement particular Traits
 //!
 //!  # Log
 //!  Log messages provide a highly tunable verbosity level on a global/per component basis.

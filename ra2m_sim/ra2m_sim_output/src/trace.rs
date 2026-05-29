@@ -7,10 +7,10 @@
 //! # FrontEnd API
 //! ## Kind
 //! Trace message are dumped with an associated Kind:
-//!   * Payload => Trace build through lifetime of a payload. Every Req/Resp Handler add their own set of
-//!   information
-//!   * Pipeline => Trace build through component pipeline. Every pipeline stage add their own set
-//!   of information
+//!   * Payload => Trace build through lifetime of a payload. Every Req/Resp
+//!     Handler add their own set of information
+//!   * Pipeline => Trace build through component pipeline. Every pipeline stage
+//!     add their own set of information
 //!
 //! The enabled Kind are managed by the user through regex that match with Module path:
 //! ` "regex_matching_on_path::[list of Category::Verbosity tuple]`
@@ -175,7 +175,12 @@ impl HwTrace {
 
             // Everything is initialized. Transmute the array to the
             // initialized type.
-            unsafe { mem::transmute::<_, [Mutex<Backend>; Kind::COUNT]>(data) }
+            unsafe {
+                mem::transmute::<
+                    [MaybeUninit<Mutex<Backend>>; Kind::COUNT],
+                    [Mutex<Backend>; Kind::COUNT],
+                >(data)
+            }
         };
         HwTrace { backend }
     }

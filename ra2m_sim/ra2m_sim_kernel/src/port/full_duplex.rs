@@ -90,8 +90,6 @@ where
     }
 
     /// Issue burst request in background and wait for associated response
-
-    /// Issue burst request in background and wait for associated response
     /// Request issued in background to enable burst size bigger that port outstanding
     /// Response awaited in foreground
     pub async fn b_req_resp_burst(

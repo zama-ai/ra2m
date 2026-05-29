@@ -60,11 +60,9 @@ impl<T> Packet<T> {
     /// Handle communication delay
     /// => Await until ready tick of the packet
     pub async fn handle_delay(&mut self) {
-        if self.timed {
-            if self.ready_at > time::TimeKeeper::cur_tick() {
-                tokio::task::yield_now().await; // TODO understand resolved MT issue
-                delay::Delay::wait_until(self.ready_at).await;
-            }
+        if self.timed && self.ready_at > time::TimeKeeper::cur_tick() {
+            tokio::task::yield_now().await; // TODO understand resolved MT issue
+            delay::Delay::wait_until(self.ready_at).await;
         }
     }
 
@@ -98,11 +96,7 @@ impl<T> Packet<T> {
     pub fn delay(&self) -> time::Tick {
         let cur_tick = time::TimeKeeper::cur_tick();
 
-        if self.ready_at <= cur_tick {
-            0
-        } else {
-            self.ready_at - cur_tick
-        }
+        self.ready_at.saturating_sub(cur_tick)
     }
 }
 

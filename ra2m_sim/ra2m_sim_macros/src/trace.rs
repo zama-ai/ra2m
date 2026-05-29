@@ -89,7 +89,7 @@ pub fn expand(ast: &DeriveInput, name: &Ident) -> Result<TokenStream> {
             fn wrap_up(&mut self, uid: usize) {
                 self.#history_field_ident.push(types::Handler::base(uid))
             }
-            fn export_as_traceable_map(vec: &Vec<Self>) -> std::collections::HashMap<&'static str, Vec<Traceable>>{
+            fn export_as_traceable_map(vec: &[Self]) -> std::collections::HashMap<&'static str, Vec<Traceable>>{
                 // convert Vec<Struct> in Vec<Tuple> where spans were expanded and traced field inserted
                 let vec_tuple = vec.iter().enumerate().flat_map(|(id, x)| {
                     let spans = x.get_history().spans();
@@ -110,7 +110,7 @@ pub fn expand(ast: &DeriveInput, name: &Ident) -> Result<TokenStream> {
         }
     };
 
-    Ok(TokenStream::from(expanded))
+    Ok(expanded)
 }
 
 fn extract_history_field(attrs: &[Attribute], name: &Ident) -> Result<Ident> {
@@ -120,10 +120,10 @@ fn extract_history_field(attrs: &[Attribute], name: &Ident) -> Result<Ident> {
             return Ok(ident);
         }
     }
-    return Err(Error::new(
+    Err(Error::new(
         name.span(),
         "#[derive(Trace)] expect `history(_)` or `default_history` attributes",
-    ));
+    ))
 }
 
 fn extract_custom_type(attrs: &[Attribute], name: &Ident) -> Result<Type> {
@@ -135,10 +135,10 @@ fn extract_custom_type(attrs: &[Attribute], name: &Ident) -> Result<Type> {
             return Ok(cust_type);
         }
     }
-    return Err(Error::new(
+    Err(Error::new(
         name.span(),
         "#[derive(Trace)] expect `custom_trace(_)` attribute",
-    ));
+    ))
 }
 
 pub fn expand_default_history(
@@ -168,5 +168,5 @@ pub fn expand_default_history(
     ast.attrs.push(history_marker);
 
     // Emit the code
-    Ok(TokenStream::from(quote! {#ast }))
+    Ok(quote! {#ast })
 }
