@@ -76,7 +76,7 @@ where
         pattern: Pattern,
         packet_options: Option<PacketOptions>,
     ) -> Packet<Self> {
-        let options = packet_options.unwrap_or(Default::default());
+        let options = packet_options.unwrap_or_default();
         Packet::wrap_payload(Self::new(read_from, write_to, pattern), options)
     }
 }

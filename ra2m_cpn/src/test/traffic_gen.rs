@@ -11,7 +11,7 @@ use ra2m_sim::prelude::*;
 use super::*;
 
 use getset::CopyGetters;
-use rand::{RngExt, SeedableRng, rngs::StdRng};
+use rand::{rngs::StdRng, RngExt, SeedableRng};
 use std::sync::{Arc, Mutex};
 use tokio::sync::mpsc;
 

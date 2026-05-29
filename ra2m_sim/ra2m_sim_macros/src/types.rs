@@ -25,12 +25,12 @@ pub(crate) fn typename_with_gen(ty: &syn::Type) -> String {
 
                 // Handle generic types nested type
                 if let syn::PathArguments::AngleBracketed(args) = &segment.arguments {
-                    if let Some(syn::GenericArgument::Type(inner_type)) = args.args.first() {
-                        if let syn::Type::Path(inner_path) = inner_type {
-                            if let Some(inner_segment) = inner_path.path.segments.last() {
-                                let inner_type_name = inner_segment.ident.to_string();
-                                return format!("{}<{}>", type_name, inner_type_name);
-                            }
+                    if let Some(syn::GenericArgument::Type(syn::Type::Path(inner_path))) =
+                        args.args.first()
+                    {
+                        if let Some(inner_segment) = inner_path.path.segments.last() {
+                            let inner_type_name = inner_segment.ident.to_string();
+                            return format!("{}<{}>", type_name, inner_type_name);
                         }
                     }
                 }

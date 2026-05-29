@@ -110,6 +110,7 @@ pub enum EndpointError {
 ///  * RxOnly   => SlavePort endpoint
 ///  * TxRxReq  => ReqRespPort (or DispatchPort) endpoint with Request flavor
 ///  * TxRxResp => ReqRespPort (or DispatchPort) endpoint with Response flavor
+///
 ///  Gathering port handle in a enum enable custom splitting and gathering of port handle.
 ///  Like binding an ReqRespPort on two distinct port instances of port (eg. Master, Slave) or the
 ///  opposite

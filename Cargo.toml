@@ -12,7 +12,6 @@ edition = "2021"
 license = "BSD-3-Clause-Clear"
 repository = "https://github.com/zama-ai/ra2m"
 readme = "Readme.md"
-rust-version="1.94"
 
 [workspace.dependencies]
 # Main publishable crates

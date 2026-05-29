@@ -146,7 +146,7 @@ impl MemBus {
         data: Option<&[u8]>,
         packet_options: Option<PacketOptions>,
     ) -> Packet<Self> {
-        let options = packet_options.unwrap_or(Default::default());
+        let options = packet_options.unwrap_or_default();
         Packet::wrap_payload(Self::new(from_uid, cmd, addr, pattern, data), options)
     }
 }

@@ -31,17 +31,14 @@ pub fn expand(ast: &DeriveInput, name: &Ident) -> Result<TokenStream> {
                 port_fields.push(field_name);
             } else {
                 // Check for required types
-                match type_name.as_str() {
-                    "Arc<Properties>" => {
-                        if properties_field.is_some() {
-                            return Err(Error::new(
-                                field_name.span(),
-                                "Only one Arc<Properties> field is allowed",
-                            ));
-                        }
-                        properties_field = Some(field_name);
+                if type_name.as_str() == "Arc<Properties>" {
+                    if properties_field.is_some() {
+                        return Err(Error::new(
+                            field_name.span(),
+                            "Only one Arc<Properties> field is allowed",
+                        ));
                     }
-                    _ => {}
+                    properties_field = Some(field_name);
                 }
             }
         }
@@ -111,7 +108,7 @@ pub fn expand(ast: &DeriveInput, name: &Ident) -> Result<TokenStream> {
         }
     };
 
-    Ok(TokenStream::from(module_impl))
+    Ok(module_impl)
 }
 
 pub fn expand_init(ast: &ItemFn, fn_name: &Ident) -> Result<proc_macro2::TokenStream> {
@@ -141,10 +138,10 @@ pub fn expand_init(ast: &ItemFn, fn_name: &Ident) -> Result<proc_macro2::TokenSt
         }
     };
 
-    Ok(TokenStream::from(quote!(
+    Ok(quote!(
         #binding
         #ast
-    )))
+    ))
 }
 
 pub fn expand_default_init(ast: &ItemImpl, impl_name: &Ident) -> Result<proc_macro2::TokenStream> {
@@ -158,10 +155,10 @@ pub fn expand_default_init(ast: &ItemImpl, impl_name: &Ident) -> Result<proc_mac
         }
     };
 
-    Ok(TokenStream::from(quote!(
+    Ok(quote!(
         #default
         #ast
-    )))
+    ))
 }
 
 pub fn expand_teardown(ast: &ItemFn, fn_name: &Ident) -> Result<proc_macro2::TokenStream> {
@@ -191,10 +188,10 @@ pub fn expand_teardown(ast: &ItemFn, fn_name: &Ident) -> Result<proc_macro2::Tok
         }
     };
 
-    Ok(TokenStream::from(quote!(
+    Ok(quote!(
         #binding
         #ast
-    )))
+    ))
 }
 
 pub fn expand_default_teardown(
@@ -211,8 +208,8 @@ pub fn expand_default_teardown(
         }
     };
 
-    Ok(TokenStream::from(quote!(
+    Ok(quote!(
     #default
     #ast
-    )))
+    ))
 }

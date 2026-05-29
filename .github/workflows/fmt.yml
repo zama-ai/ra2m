@@ -2,7 +2,6 @@ name: Format
 
 on:
   pull_request:
-    branches: [ "main" ]
 
 env:
   CARGO_TERM_COLOR: always
@@ -15,13 +14,11 @@ jobs:
       uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 #v6.0.1
       with:
         persist-credentials: 'false'
-    - name: Install Rust nightly with rustfmt
-      uses: dtolnay/rust-toolchain@nightly
-      with:
-        components: rustfmt
     - name: Install just
       uses: taiki-e/install-action@7ea35f098a7369cd23488403f58be9c491a6c55f # v2.77.0
       with:
         tool: just
+    - name: Install rustfmt
+      run: rustup component add rustfmt
     - name: Check formatting
       run: just fmt-check

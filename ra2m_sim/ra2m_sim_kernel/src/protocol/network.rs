@@ -77,7 +77,7 @@ where
         payload: P,
         packet_options: Option<PacketOptions>,
     ) -> Packet<Self> {
-        let options = packet_options.unwrap_or(Default::default());
+        let options = packet_options.unwrap_or_default();
         Packet::wrap_payload(Self::new(from, to, payload), options)
     }
 }
@@ -92,7 +92,7 @@ where
     pub fn inner_unwrap(self) -> Packet<P> {
         // Extract current options
         let timed = self.timed();
-        let sid = self.sid().clone();
+        let sid = *self.sid();
         let delay = self.delay();
 
         let Network { payload, .. } = self.unwrap_payload();
@@ -104,7 +104,7 @@ where
     pub fn inner_wrap(from: T, to: T, inner: Packet<P>) -> Self {
         // Extract current options
         let timed = inner.timed();
-        let sid = inner.sid().clone();
+        let sid = *inner.sid();
         let delay = inner.delay();
 
         let payload = inner.unwrap_payload();

@@ -1,8 +1,5 @@
 use clap::Parser;
-use rand::{
-    rngs::StdRng,
-    {Rng, SeedableRng},
-};
+use rand::{rngs::StdRng, RngExt};
 
 use ra2m_ffi::ipc::prelude::*;
 
@@ -40,9 +37,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 }
             } else {
                 // Randomly generate data
-                let mut rng: StdRng = SeedableRng::from_os_rng();
+                let mut rng: StdRng = rand::make_rng();
                 for _ in 0..size_b {
-                    data.push(rng.r#gen::<u8>());
+                    data.push(rng.random::<u8>());
                 }
             }
 
