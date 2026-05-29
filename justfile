@@ -92,7 +92,7 @@ publish-check:
 # ── CI ────────────────────────────────────────────────────────────────────────
 
 # Full check suite: format → lint → test
-ci: fmt-check clippy test
+ci: fmt-check check test
 
 # ── Git hooks ─────────────────────────────────────────────────────────────────
 # List of supported git hook
