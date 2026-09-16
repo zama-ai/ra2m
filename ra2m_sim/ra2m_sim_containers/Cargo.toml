@@ -11,4 +11,4 @@ readme.workspace = true
 rustix = {version = "0.38", features = ["mm"]}
 anyhow = "1"
 serde = { version = "1", features = ["derive"] }
-thiserror = "1"
+thiserror = "2"
