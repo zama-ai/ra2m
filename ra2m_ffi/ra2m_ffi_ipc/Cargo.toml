@@ -10,4 +10,4 @@ readme.workspace = true
 [dependencies]
 ipc-channel ="0.18"
 serde = { version = "1", features = ["derive"] }
-thiserror = "2.0"
+thiserror = "2"
